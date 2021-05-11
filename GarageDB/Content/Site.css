@@ -1,0 +1,167 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 400px;
+}
+
+.k-textbox.medium-field {
+    width: 200px !important;
+    margin: 5px;
+}
+
+.k-textbox.comments-defects {
+    width: 450px;
+    margin: 5px;
+}
+
+.button-group {
+    padding-top: 8px;
+    padding-right: 8px;
+}
+
+.red-text {
+    color: red;
+}
+
+.green-text {
+    color: green;
+}
+
+.orange-text {
+    color: orange;
+}
+
+.grid-header {
+    font-weight: bold;
+}
+
+/* switch css start */ 
+/* source: https://proto.io/freebies/onoff */
+
+.onoffswitch {
+    position: relative; width: 65px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #707070; border-radius: 8px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 17px; padding: 0; line-height: 17px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "Pass";
+    padding-left: 10px;
+    background-color: #008000; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "Fail";
+    padding-right: 10px;
+    background-color: #FF0000; color: #FFFFFF;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 9px; margin: 4px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 44px;
+    border: 2px solid #707070; border-radius: 8px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
+
+/* switch css end */ 
+
+/* switch css start */ 
+/* source: https://proto.io/freebies/onoff */
+
+.doneswitch {
+    position: relative; width: 65px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.doneswitch-checkbox {
+    display: none;
+}
+.doneswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #707070; border-radius: 8px;
+}
+.doneswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.doneswitch-inner:before, .doneswitch-inner:after {
+    display: block; float: left; width: 50%; height: 17px; padding: 0; line-height: 17px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.doneswitch-inner:before {
+    content: "Done";
+    padding-left: 10px;
+    background-color: #008000; color: #FFFFFF;
+}
+.doneswitch-inner:after {
+    content: "";
+    padding-right: 10px;
+    background-color: #FF0000; color: #FFFFFF;
+    text-align: right;
+}
+.doneswitch-switch {
+    display: block; width: 9px; margin: 4px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 44px;
+    border: 2px solid #707070; border-radius: 8px;
+    transition: all 0.3s ease-in 0s; 
+}
+.doneswitch-checkbox:checked + .doneswitch-label .doneswitch-inner {
+    margin-left: 0;
+}
+.doneswitch-checkbox:checked + .doneswitch-label .doneswitch-switch {
+    right: 0px; 
+}
+
+/* switch css end */ 
+
+.breadcrumb {
+    padding-left: 0px;
+    background-color: white;
+}
+
+.editor-template-notes {
+    margin-left: 16px;
+    width: 375px;
+}

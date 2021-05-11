@@ -1,0 +1,589 @@
+﻿@model GarageDB.Models.VehicleService
+@{
+    ViewBag.Title = "Interim service";
+}
+
+<div>
+    <ol class="breadcrumb">
+        <li>@Html.ActionLink((string)ViewBag.Customer.Name, "View", "Customers", new { ViewBag.Customer.Id }, null)</li>
+        <li>@Html.ActionLink((string)ViewBag.Vehicle.ToString(), "View", "Vehicles", new { ViewBag.Vehicle.Id }, null)</li>
+        <li class="active">@ViewBag.Title</li>
+    </ol>
+</div>
+
+<h3>@ViewBag.Title</h3>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Engine</h3>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.DrainOilAndRefill)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.DrainOilAndRefill))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.ReplaceOilFilter)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.ReplaceOilFilter))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.ExcessiveOilLeakCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.ExcessiveOilLeakCheck))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.TimingBeltCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.TimingBeltCheck))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.UndertrayCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.UndertrayCheck))
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="grid-header">@Html.DisplayName("Notes")</div>
+                    <div>
+                        @Html.DisplayFor(o => o.EngineComments)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Drive system</h3>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.ClutchOperationCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.ClutchOperationCheck))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.GearboxOperationCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.GearboxOperationCheck))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.ClutchFluidCheckTopup)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.ClutchFluidCheckTopup))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.DriveShaftGaitorCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.DriveShaftGaitorCheck))
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="grid-header">@Html.DisplayName("Notes")</div>
+                    <div>
+                        @Html.DisplayFor(o => o.DriveSystemComments)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Electrical</h3>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.ExteriorLightOperationCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.ExteriorLightOperationCheck))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.HornCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.HornCheck))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.DashboardWarningLightCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.DashboardWarningLightCheck))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.BatteryConditionCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.BatteryConditionCheck))
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="grid-header">@Html.DisplayName("Notes")</div>
+                    <div>
+                        @Html.DisplayFor(o => o.ElectricalComments)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Steering and suspension</h3>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.PowerSteeringReservoirTopUpCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.PowerSteeringReservoirTopUpCheck))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.SteeringSuspensionComponentWearCorrosionCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.SteeringSuspensionComponentWearCorrosionCheck))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.SteeringRackGaiterConditionCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.SteeringRackGaiterConditionCheck))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.WheelBearingCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.WheelBearingCheck))
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="grid-header">@Html.DisplayName("Notes")</div>
+                    <div>
+                        @Html.DisplayFor(o => o.SteeringAndSuspensionComments)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Exhaust</h3>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.ExhaustSystemInspection)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.ExhaustSystemInspection))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.ExhaustSmokeVisualCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.ExhaustSmokeVisualCheck))
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="grid-header">@Html.DisplayName("Notes")</div>
+                    <div>
+                        @Html.DisplayFor(o => o.ExhaustComments)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Brakes</h3>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.BrakePadWearDamageCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.BrakePadWearDamageCheck))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.BrakeCalliperCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.BrakeCalliperCheck))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.BrakeShoesWearDamageCheckCleanAdjust)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.BrakeShoesWearDamageCheckCleanAdjust))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.WheelCylinderInspectionReportLeaks)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.WheelCylinderInspectionReportLeaks))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.BrakeHydraulicSystemPipeHoseLeakChafingCorrosionCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.BrakeHydraulicSystemPipeHoseLeakChafingCorrosionCheck))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.HandbrakeLinkageTravelCheckLubricateAdjust)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.HandbrakeLinkageTravelCheckLubricateAdjust))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.BrakeDiscDrumWearCracksCorrosionScoringPittingCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.BrakeDiscDrumWearCracksCorrosionScoringPittingCheck))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.BrakeFluidTopUpCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.BrakeFluidTopUpCheck))
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="grid-header">@Html.DisplayName("Notes")</div>
+                    <div>
+                        @Html.DisplayFor(o => o.BrakeComments)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Tyre and wheels</h3>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.RemoveRoadWheels)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.RemoveRoadWheels))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.TyreSizeFittedCorrectly)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.TyreSizeFittedCorrectly))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.TyreConditionThreadDepth)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.TyreConditionThreadDepth))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.TyrePressureAdjustCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.TyrePressureAdjustCheck))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.SetWheelNutTorqueToManufacturer)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.SetWheelNutTorqueToManufacturer))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.WheelBalanceCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.WheelBalanceCheck))
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="grid-header">@Html.DisplayName("Notes")</div>
+                    <div>
+                        @Html.DisplayFor(o => o.TyresAndWheelsComments)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Vision</h3>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.WindscreenWiperConditionOperationCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.WindscreenWiperConditionOperationCheck))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.RearWindscreenWiperConditionOperationCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.RearWindscreenWiperConditionOperationCheck))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.WindscreenWasherOperationAlignJetsTopUpCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.WindscreenWasherOperationAlignJetsTopUpCheck))
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="grid-header">@Html.DisplayName("Notes")</div>
+                    <div>
+                        @Html.DisplayFor(o => o.VisionComments)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Internal</h3>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.CabinFilterCheck)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.CabinFilterCheck))
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="grid-header">@Html.DisplayName("Notes")</div>
+                    <div>
+                        @Html.DisplayFor(o => o.InternalComments)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">General</h3>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-2"></div>
+                <div class="col-md-5"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.ResetServiceLight)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.ResetServiceLight))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.RoadTest)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.RoadTest))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div>@Html.DisplayNameFor(o => o.StampServiceBook)</div>
+                        </div>
+                        <div class="col-md-2">
+                            @Html.Raw(GarageDB.Helpers.PassFailHelper.GetPassFailGlyphHtml(Model.StampServiceBook))
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="grid-header">@Html.DisplayName("Notes")</div>
+                    <div>
+                        @Html.DisplayFor(o => o.GeneralComments)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="button-group">
+    <button class="k-button" type="button" value="Edit" onclick="location.href='@Url.Action("EditInterim", "Servicing", new { id = Model.Id })'">Edit</button>
+    <button class="k-button" type="button" value="Back" onclick="location.href='@Url.Action("View", "Vehicles", new { id = Model.VehicleId })'">Back</button>
+</div>

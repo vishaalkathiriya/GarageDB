@@ -1,0 +1,88 @@
+﻿@model GarageDB.Models.Customer
+@{
+    ViewBag.Title = "Add customer";
+}
+
+<h3>@ViewBag.Title</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.Id)
+    <div class="row">
+        <div class="col-md-3">
+            @Html.DisplayNameFor(o => o.Name)
+        </div>
+        <div class="col-md-3">
+            @Html.TextBoxFor(model => model.Name, new { @class = "k-textbox medium-field" })
+            @Html.ValidationMessageFor(o => o.Name)
+        </div>
+        <div class="col-md-3">
+            @Html.DisplayNameFor(o => o.Address)
+        </div>
+        <div class="col-md-3">
+            @Html.TextAreaFor(model => model.Address, 5, 1, new { @class = "k-textbox medium-field" })
+            @Html.ValidationMessageFor(o => o.Address)
+        </div>
+        <div class="col-md-3">
+            @Html.DisplayNameFor(o => o.TelephoneNumber)
+        </div>
+        <div class="col-md-3">
+            @Html.TextBoxFor(o => o.TelephoneNumber, new { @class = "k-textbox medium-field" })
+            @Html.ValidationMessageFor(o => o.TelephoneNumber)
+        </div>
+        <div class="col-md-3">
+            @Html.DisplayNameFor(o => o.Postcode)
+        </div>
+        <div class="col-md-3">
+            @Html.TextBoxFor(o => o.Postcode, new { @class = "k-textbox medium-field" })
+            @Html.ValidationMessageFor(o => o.Postcode)
+        </div>
+        <div class="col-md-3">
+            @Html.DisplayNameFor(o => o.Email)
+        </div>
+        <div class="col-md-3">
+            @Html.TextBoxFor(o => o.Email, new { @class = "k-textbox medium-field" })
+            @Html.ValidationMessageFor(o => o.Email)
+        </div>
+    </div>
+    <input class="k-button" type="submit" value="Save" />
+    <button id="cancel" class="lose-changes-button k-button" type="button" value="Cancel">Cancel</button>
+    <script id="lose-changes-confirmation" type="text/x-kendo-template">
+        <p class="lose-changes-message">There are unsaved changes?</p>
+        <button class="lose-changes-confirm k-button">Lose changes</button> &nbsp;
+        <a href="#" class="lose-changes-cancel k-button">Cancel</a>
+    </script>
+}
+<script>
+    $("form :input").change(function () {
+        $(this).closest('form').data('changed', true);
+    });
+
+    $('#cancel').click(function () {
+        if ($(this).closest('form').data('changed')) {
+            var kendoWindow = $("<div />").kendoWindow({
+                title: "Confirm",
+                resizable: false,
+                modal: true
+            });
+
+            kendoWindow.data("kendoWindow")
+                .content($("#lose-changes-confirmation").html())
+                .center().open();
+
+            kendoWindow
+                .find(".lose-changes-confirm,.lose-changes-cancel")
+                    .click(function () {
+                        if ($(this).hasClass("lose-changes-confirm")) {
+                            window.location.replace('/Search');
+                        }
+
+                        kendoWindow.data("kendoWindow").close();
+                    })
+                    .end()
+        }
+        else {
+            window.location.replace('/Search');
+        }
+    });
+</script>

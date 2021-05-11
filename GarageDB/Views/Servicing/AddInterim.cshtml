@@ -1,0 +1,865 @@
+﻿@model GarageDB.Models.VehicleService
+@{
+    ViewBag.Title = string.Format("Add interim service for vehicle {0}", ViewBag.Vehicle.ToString());
+}
+
+<h3>@ViewBag.Title</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.VehicleId)
+
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Engine</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.DrainOilAndRefill)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="DrainOilAndRefillSwitch" class="doneswitch-checkbox" id="DrainOilAndRefillSwitch">
+                                    <label class="doneswitch-label" for="DrainOilAndRefillSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.ReplaceOilFilter)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="ReplaceOilFilterSwitch" class="doneswitch-checkbox" id="ReplaceOilFilterSwitch">
+                                    <label class="doneswitch-label" for="ReplaceOilFilterSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.ExcessiveOilLeakCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="ExcessiveOilLeakCheckSwitch" class="doneswitch-checkbox" id="ExcessiveOilLeakCheckSwitch">
+                                    <label class="doneswitch-label" for="ExcessiveOilLeakCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.TimingBeltCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="TimingBeltCheckSwitch" class="doneswitch-checkbox" id="TimingBeltCheckSwitch">
+                                    <label class="doneswitch-label" for="TimingBeltCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.UndertrayCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="UndertrayCheckSwitch" class="doneswitch-checkbox" id="UndertrayCheckSwitch">
+                                    <label class="doneswitch-label" for="UndertrayCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="grid-header">@Html.DisplayName("Comments")</div>
+                        <div>
+                            @Html.TextAreaFor(model => model.EngineComments, 8, 1, new { @class = "k-textbox comments-defects" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Drive system</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.ClutchOperationCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="ClutchOperationCheckSwitch" class="doneswitch-checkbox" id="ClutchOperationCheckSwitch">
+                                    <label class="doneswitch-label" for="ClutchOperationCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.GearboxOperationCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="GearboxOperationCheckSwitch" class="doneswitch-checkbox" id="GearboxOperationCheckSwitch">
+                                    <label class="doneswitch-label" for="GearboxOperationCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.ClutchFluidCheckTopup)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="ClutchFluidCheckTopupSwitch" class="doneswitch-checkbox" id="ClutchFluidCheckTopupSwitch">
+                                    <label class="doneswitch-label" for="ClutchFluidCheckTopupSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.DriveShaftGaitorCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="DriveShaftGaitorCheckSwitch" class="doneswitch-checkbox" id="DriveShaftGaitorCheckSwitch">
+                                    <label class="doneswitch-label" for="DriveShaftGaitorCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="grid-header">@Html.DisplayName("Comments")</div>
+                        <div>
+                            @Html.TextAreaFor(model => model.DriveSystemComments, 6, 1, new { @class = "k-textbox comments-defects" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Electrical</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.ExteriorLightOperationCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="ExteriorLightOperationCheckSwitch" class="doneswitch-checkbox" id="ExteriorLightOperationCheckSwitch">
+                                    <label class="doneswitch-label" for="ExteriorLightOperationCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.HornCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="HornCheckSwitch" class="doneswitch-checkbox" id="HornCheckSwitch">
+                                    <label class="doneswitch-label" for="HornCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.DashboardWarningLightCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="DashboardWarningLightCheckSwitch" class="doneswitch-checkbox" id="DashboardWarningLightCheckSwitch">
+                                    <label class="doneswitch-label" for="DashboardWarningLightCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.BatteryConditionCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="BatteryConditionCheckSwitch" class="doneswitch-checkbox" id="BatteryConditionCheckSwitch">
+                                    <label class="doneswitch-label" for="BatteryConditionCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="grid-header">@Html.DisplayName("Comments")</div>
+                        <div>
+                            @Html.TextAreaFor(model => model.ElectricalComments, 8, 1, new { @class = "k-textbox comments-defects" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Steering and suspension</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.PowerSteeringReservoirTopUpCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="PowerSteeringReservoirTopUpCheckSwitch" class="doneswitch-checkbox" id="PowerSteeringReservoirTopUpCheckSwitch">
+                                    <label class="doneswitch-label" for="PowerSteeringReservoirTopUpCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.SteeringSuspensionComponentWearCorrosionCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="SteeringSuspensionComponentWearCorrosionCheckSwitch" class="doneswitch-checkbox" id="SteeringSuspensionComponentWearCorrosionCheckSwitch">
+                                    <label class="doneswitch-label" for="SteeringSuspensionComponentWearCorrosionCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.SteeringRackGaiterConditionCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="SteeringRackGaiterConditionCheckSwitch" class="doneswitch-checkbox" id="SteeringRackGaiterConditionCheckSwitch">
+                                    <label class="doneswitch-label" for="SteeringRackGaiterConditionCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.WheelBearingCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="WheelBearingCheckSwitch" class="doneswitch-checkbox" id="WheelBearingCheckSwitch">
+                                    <label class="doneswitch-label" for="WheelBearingCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="grid-header">@Html.DisplayName("Comments")</div>
+                        <div>
+                            @Html.TextAreaFor(model => model.SteeringAndSuspensionComments, 8, 1, new { @class = "k-textbox comments-defects" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Exhaust</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.ExhaustSystemInspection)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="ExhaustSystemInspectionSwitch" class="doneswitch-checkbox" id="ExhaustSystemInspectionSwitch">
+                                    <label class="doneswitch-label" for="ExhaustSystemInspectionSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.ExhaustSmokeVisualCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="ExhaustSmokeVisualCheckSwitch" class="doneswitch-checkbox" id="ExhaustSmokeVisualCheckSwitch">
+                                    <label class="doneswitch-label" for="ExhaustSmokeVisualCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="grid-header">@Html.DisplayName("Comments")</div>
+                        <div>
+                            @Html.TextAreaFor(model => model.ExhaustComments, 8, 1, new { @class = "k-textbox comments-defects" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Brakes</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.BrakePadWearDamageCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="BrakePadWearDamageCheckSwitch" class="doneswitch-checkbox" id="BrakePadWearDamageCheckSwitch">
+                                    <label class="doneswitch-label" for="BrakePadWearDamageCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.BrakeCalliperCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="BrakeCalliperCheckSwitch" class="doneswitch-checkbox" id="BrakeCalliperCheckSwitch">
+                                    <label class="doneswitch-label" for="BrakeCalliperCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.BrakeShoesWearDamageCheckCleanAdjust)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="BrakeShoesWearDamageCheckCleanAdjustSwitch" class="doneswitch-checkbox" id="BrakeShoesWearDamageCheckCleanAdjustSwitch">
+                                    <label class="doneswitch-label" for="BrakeShoesWearDamageCheckCleanAdjustSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.WheelCylinderInspectionReportLeaks)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="WheelCylinderInspectionReportLeaksSwitch" class="doneswitch-checkbox" id="WheelCylinderInspectionReportLeaksSwitch">
+                                    <label class="doneswitch-label" for="WheelCylinderInspectionReportLeaksSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.BrakeHydraulicSystemPipeHoseLeakChafingCorrosionCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="BrakeHydraulicSystemPipeHoseLeakChafingCorrosionCheckSwitch" class="doneswitch-checkbox" id="BrakeHydraulicSystemPipeHoseLeakChafingCorrosionCheckSwitch">
+                                    <label class="doneswitch-label" for="BrakeHydraulicSystemPipeHoseLeakChafingCorrosionCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.HandbrakeLinkageTravelCheckLubricateAdjust)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="HandbrakeLinkageTravelCheckLubricateAdjustSwitch" class="doneswitch-checkbox" id="HandbrakeLinkageTravelCheckLubricateAdjustSwitch">
+                                    <label class="doneswitch-label" for="HandbrakeLinkageTravelCheckLubricateAdjustSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.BrakeDiscDrumWearCracksCorrosionScoringPittingCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="BrakeDiscDrumWearCracksCorrosionScoringPittingCheckSwitch" class="doneswitch-checkbox" id="BrakeDiscDrumWearCracksCorrosionScoringPittingCheckSwitch">
+                                    <label class="doneswitch-label" for="BrakeDiscDrumWearCracksCorrosionScoringPittingCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.BrakeFluidTopUpCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="BrakeFluidTopUpCheckSwitch" class="doneswitch-checkbox" id="BrakeFluidTopUpCheckSwitch">
+                                    <label class="doneswitch-label" for="BrakeFluidTopUpCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="grid-header">@Html.DisplayName("Comments")</div>
+                        <div>
+                            @Html.TextAreaFor(model => model.BrakeComments, 8, 1, new { @class = "k-textbox comments-defects" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Tyres and wheels</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.RemoveRoadWheels)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="RemoveRoadWheelsSwitch" class="doneswitch-checkbox" id="RemoveRoadWheelsSwitch">
+                                    <label class="doneswitch-label" for="RemoveRoadWheelsSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.TyreSizeFittedCorrectly)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="TyreSizeFittedCorrectlySwitch" class="doneswitch-checkbox" id="TyreSizeFittedCorrectlySwitch">
+                                    <label class="doneswitch-label" for="TyreSizeFittedCorrectlySwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.TyreConditionThreadDepth)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="TyreConditionThreadDepthSwitch" class="doneswitch-checkbox" id="TyreConditionThreadDepthSwitch">
+                                    <label class="doneswitch-label" for="TyreConditionThreadDepthSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.TyrePressureAdjustCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="TyrePressureAdjustCheckSwitch" class="doneswitch-checkbox" id="TyrePressureAdjustCheckSwitch">
+                                    <label class="doneswitch-label" for="TyrePressureAdjustCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.SetWheelNutTorqueToManufacturer)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="SetWheelNutTorqueToManufacturerSwitch" class="doneswitch-checkbox" id="SetWheelNutTorqueToManufacturerSwitch">
+                                    <label class="doneswitch-label" for="SetWheelNutTorqueToManufacturerSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.WheelBalanceCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="WheelBalanceCheckSwitch" class="doneswitch-checkbox" id="WheelBalanceCheckSwitch">
+                                    <label class="doneswitch-label" for="WheelBalanceCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="grid-header">@Html.DisplayName("Comments")</div>
+                        <div>
+                            @Html.TextAreaFor(model => model.TyresAndWheelsComments, 8, 1, new { @class = "k-textbox comments-defects" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Vision</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.WindscreenWiperConditionOperationCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="WindscreenWiperConditionOperationCheckSwitch" class="doneswitch-checkbox" id="WindscreenWiperConditionOperationCheckSwitch">
+                                    <label class="doneswitch-label" for="WindscreenWiperConditionOperationCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.RearWindscreenWiperConditionOperationCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="RearWindscreenWiperConditionOperationCheckSwitch" class="doneswitch-checkbox" id="RearWindscreenWiperConditionOperationCheckSwitch">
+                                    <label class="doneswitch-label" for="RearWindscreenWiperConditionOperationCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.WindscreenWasherOperationAlignJetsTopUpCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="WindscreenWasherOperationAlignJetsTopUpCheckSwitch" class="doneswitch-checkbox" id="WindscreenWasherOperationAlignJetsTopUpCheckSwitch">
+                                    <label class="doneswitch-label" for="WindscreenWasherOperationAlignJetsTopUpCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="grid-header">@Html.DisplayName("Comments")</div>
+                        <div>
+                            @Html.TextAreaFor(model => model.VisionComments, 8, 1, new { @class = "k-textbox comments-defects" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Internal</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.CabinFilterCheck)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="CabinFilterCheckSwitch" class="doneswitch-checkbox" id="CabinFilterCheckSwitch">
+                                    <label class="doneswitch-label" for="CabinFilterCheckSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="grid-header">@Html.DisplayName("Comments")</div>
+                        <div>
+                            @Html.TextAreaFor(model => model.InternalComments, 8, 1, new { @class = "k-textbox comments-defects" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">General</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.ResetServiceLight)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="ResetServiceLightSwitch" class="doneswitch-checkbox" id="ResetServiceLightSwitch">
+                                    <label class="doneswitch-label" for="ResetServiceLightSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.RoadTest)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="RoadTestSwitch" class="doneswitch-checkbox" id="RoadTestSwitch">
+                                    <label class="doneswitch-label" for="RoadTestSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.StampServiceBook)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="doneswitch">
+                                    <input type="checkbox" name="StampServiceBookSwitch" class="doneswitch-checkbox" id="StampServiceBookSwitch">
+                                    <label class="doneswitch-label" for="StampServiceBookSwitch">
+                                        <span class="doneswitch-inner"></span>
+                                        <span class="doneswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="grid-header">@Html.DisplayName("Comments")</div>
+                        <div>
+                            @Html.TextAreaFor(model => model.GeneralComments, 8, 1, new { @class = "k-textbox comments-defects" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input class="k-button" type="submit" value="Save" />
+    <button id="cancel" class="lose-changes-button k-button" type="button" value="Cancel">Cancel</button>
+    <script id="lose-changes-confirmation" type="text/x-kendo-template">
+        <p class="lose-changes-message">There are unsaved changes?</p>
+        <button class="lose-changes-confirm k-button">Lose changes</button> &nbsp;
+        <a href="#" class="lose-changes-cancel k-button">Cancel</a>
+    </script>
+}
+
+<script>
+    $("form :input").change(function () {
+        $(this).closest('form').data('changed', true);
+    });
+
+    $('#cancel').click(function () {
+        if ($(this).closest('form').data('changed')) {
+            var kendoWindow = $("<div />").kendoWindow({
+                title: "Confirm",
+                resizable: false,
+                modal: true
+            });
+
+            kendoWindow.data("kendoWindow")
+                .content($("#lose-changes-confirmation").html())
+                .center().open();
+
+            kendoWindow
+                .find(".lose-changes-confirm,.lose-changes-cancel")
+                    .click(function () {
+                        if ($(this).hasClass("lose-changes-confirm")) {
+                            window.location.replace('/Vehicles/View/@Model.VehicleId.ToString()');
+                        }
+
+                        kendoWindow.data("kendoWindow").close();
+                    })
+                    .end()
+        }
+        else {
+            window.location.replace('/Vehicles/View/@Model.VehicleId.ToString()');
+        }
+    });
+</script>

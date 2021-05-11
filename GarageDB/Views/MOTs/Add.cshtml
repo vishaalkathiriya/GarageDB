@@ -1,0 +1,719 @@
+﻿@model GarageDB.Models.MOT
+@{
+    ViewBag.Title = string.Format("Add MOT for vehicle {0}", ViewBag.VehicleName);
+}
+
+<h3>@ViewBag.Title</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.VehicleId)
+
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Interior checks</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.SeatsAndSeatBelts)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="SeatsAndSeatBeltsSwitch" class="onoffswitch-checkbox" id="SeatsAndSeatBeltsSwitch">
+                                    <label class="onoffswitch-label" for="SeatsAndSeatBeltsSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.WarningLamps)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="WarningLampsSwitch" class="onoffswitch-checkbox" id="WarningLampsSwitch">
+                                    <label class="onoffswitch-label" for="WarningLampsSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.Switches)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="SwitchesSwitch" class="onoffswitch-checkbox" id="SwitchesSwitch">
+                                    <label class="onoffswitch-label" for="SwitchesSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.FrontViewWipersWashers)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="FrontViewWipersWashersSwitch" class="onoffswitch-checkbox" id="FrontViewWipersWashersSwitch">
+                                    <label class="onoffswitch-label" for="FrontViewWipersWashersSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.BrakeControlsServo)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="BrakeControlsServoSwitch" class="onoffswitch-checkbox" id="BrakeControlsServoSwitch">
+                                    <label class="onoffswitch-label" for="BrakeControlsServoSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.SteeringWheelAndColumn)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="SteeringWheelAndColumnSwitch" class="onoffswitch-checkbox" id="SteeringWheelAndColumnSwitch">
+                                    <label class="onoffswitch-label" for="SteeringWheelAndColumnSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.DoorsMirrorsHorn)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="DoorsMirrorsHornSwitch" class="onoffswitch-checkbox" id="DoorsMirrorsHornSwitch">
+                                    <label class="onoffswitch-label" for="DoorsMirrorsHornSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.SpeedometerDriverControls)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="SpeedometerDriverControlsSwitch" class="onoffswitch-checkbox" id="SpeedometerDriverControlsSwitch">
+                                    <label class="onoffswitch-label" for="SpeedometerDriverControlsSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="grid-header">@Html.DisplayName("Defects / Comments")</div>
+                        <div>
+                            @Html.TextAreaFor(model => model.InteriorChecksDefectsComments, 8, 1, new { @class = "k-textbox comments-defects" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Exterior checks</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.RegistrationPlates)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="RegistrationPlatesSwitch" class="onoffswitch-checkbox" id="RegistrationPlatesSwitch">
+                                    <label class="onoffswitch-label" for="RegistrationPlatesSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.LampsAndRegistrationPlateLamps)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="LampsAndRegistrationPlateLampsSwitch" class="onoffswitch-checkbox" id="LampsAndRegistrationPlateLampsSwitch">
+                                    <label class="onoffswitch-label" for="LampsAndRegistrationPlateLampsSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.IndicatorsHazards)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="IndicatorsHazardsSwitch" class="onoffswitch-checkbox" id="IndicatorsHazardsSwitch">
+                                    <label class="onoffswitch-label" for="IndicatorsHazardsSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.HeadlampsAndAim)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="HeadlampsAndAimSwitch" class="onoffswitch-checkbox" id="HeadlampsAndAimSwitch">
+                                    <label class="onoffswitch-label" for="HeadlampsAndAimSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.StopLampsFogLampsReflectors)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="StopLampsFogLampsReflectorsSwitch" class="onoffswitch-checkbox" id="StopLampsFogLampsReflectorsSwitch">
+                                    <label class="onoffswitch-label" for="StopLampsFogLampsReflectorsSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.WheelsTyres)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="WheelsTyresSwitch" class="onoffswitch-checkbox" id="WheelsTyresSwitch">
+                                    <label class="onoffswitch-label" for="WheelsTyresSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.ShockAbsorbers)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="ShockAbsorbersSwitch" class="onoffswitch-checkbox" id="ShockAbsorbersSwitch">
+                                    <label class="onoffswitch-label" for="ShockAbsorbersSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.MirrorsWiperBladesFuelTankCap)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="MirrorsWiperBladesFuelTankCapSwitch" class="onoffswitch-checkbox" id="MirrorsWiperBladesFuelTankCapSwitch">
+                                    <label class="onoffswitch-label" for="MirrorsWiperBladesFuelTankCapSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.Glazing)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="GlazingSwitch" class="onoffswitch-checkbox" id="GlazingSwitch">
+                                    <label class="onoffswitch-label" for="GlazingSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.DoorsBootLidLoadingDoorsBonnet)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="DoorsBootLidLoadingDoorsBonnetSwitch" class="onoffswitch-checkbox" id="DoorsBootLidLoadingDoorsBonnetSwitch">
+                                    <label class="onoffswitch-label" for="DoorsBootLidLoadingDoorsBonnetSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.Towbars)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="TowbarsSwitch" class="onoffswitch-checkbox" id="TowbarsSwitch">
+                                    <label class="onoffswitch-label" for="TowbarsSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.GeneralConditionOfBody)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="GeneralConditionOfBodySwitch" class="onoffswitch-checkbox" id="GeneralConditionOfBodySwitch">
+                                    <label class="onoffswitch-label" for="GeneralConditionOfBodySwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="grid-header">@Html.DisplayName("Defects / Comments")</div>
+                        <div>
+                            @Html.TextAreaFor(model => model.ExteriorChecksDefectsComments, 8, 1, new { @class = "k-textbox comments-defects" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Under bonnet checks</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.VehicleStructure)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="VehicleStructureSwitch" class="onoffswitch-checkbox" id="VehicleStructureSwitch">
+                                    <label class="onoffswitch-label" for="VehicleStructureSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.BrakingSystems)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="BrakingSystemsSwitch" class="onoffswitch-checkbox" id="BrakingSystemsSwitch">
+                                    <label class="onoffswitch-label" for="BrakingSystemsSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.ExhaustSystemsFuelSystem)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="ExhaustSystemsFuelSystemSwitch" class="onoffswitch-checkbox" id="ExhaustSystemsFuelSystemSwitch">
+                                    <label class="onoffswitch-label" for="ExhaustSystemsFuelSystemSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.SpeedLimiter)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="SpeedLimiterSwitch" class="onoffswitch-checkbox" id="SpeedLimiterSwitch">
+                                    <label class="onoffswitch-label" for="SpeedLimiterSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.SteeringAndPowerSterringComponents)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="SteeringAndPowerSterringComponentsSwitch" class="onoffswitch-checkbox" id="SteeringAndPowerSterringComponentsSwitch">
+                                    <label class="onoffswitch-label" for="SteeringAndPowerSterringComponentsSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.SuspensionComponents)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="SuspensionComponentsSwitch" class="onoffswitch-checkbox" id="SuspensionComponentsSwitch">
+                                    <label class="onoffswitch-label" for="SuspensionComponentsSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="grid-header">@Html.DisplayName("Defects / Comments")</div>
+                        <div>
+                            @Html.TextAreaFor(model => model.UnderBonnetChecksDefectsComments, 6, 1, new { @class = "k-textbox comments-defects" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Under vehicle checks</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.SteeringIncludingPowerSteering)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="SteeringIncludingPowerSteeringSwitch" class="onoffswitch-checkbox" id="SteeringIncludingPowerSteeringSwitch">
+                                    <label class="onoffswitch-label" for="SteeringIncludingPowerSteeringSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.DriveShafts)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="DriveShaftsSwitch" class="onoffswitch-checkbox" id="DriveShaftsSwitch">
+                                    <label class="onoffswitch-label" for="DriveShaftsSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.SuspensionShockAbsorbers)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="SuspensionShockAbsorbersSwitch" class="onoffswitch-checkbox" id="SuspensionShockAbsorbersSwitch">
+                                    <label class="onoffswitch-label" for="SuspensionShockAbsorbersSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.WheelBearings)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="WheelBearingsSwitch" class="onoffswitch-checkbox" id="WheelBearingsSwitch">
+                                    <label class="onoffswitch-label" for="WheelBearingsSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.WheelsAndTyres)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="WheelsAndTyresSwitch" class="onoffswitch-checkbox" id="WheelsAndTyresSwitch">
+                                    <label class="onoffswitch-label" for="WheelsAndTyresSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.BrakeSystemsAndMechanicalComponents)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="BrakeSystemsAndMechanicalComponentsSwitch" class="onoffswitch-checkbox" id="BrakeSystemsAndMechanicalComponentsSwitch">
+                                    <label class="onoffswitch-label" for="BrakeSystemsAndMechanicalComponentsSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.ExhaustSystem)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="ExhaustSystemSwitch" class="onoffswitch-checkbox" id="ExhaustSystemSwitch">
+                                    <label class="onoffswitch-label" for="ExhaustSystemSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.FuelSystemAndFuelTank)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="FuelSystemAndFuelTankSwitch" class="onoffswitch-checkbox" id="FuelSystemAndFuelTankSwitch">
+                                    <label class="onoffswitch-label" for="FuelSystemAndFuelTankSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.StructureGeneralVehicleCondition)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="StructureGeneralVehicleConditionSwitch" class="onoffswitch-checkbox" id="StructureGeneralVehicleConditionSwitch">
+                                    <label class="onoffswitch-label" for="StructureGeneralVehicleConditionSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="grid-header">@Html.DisplayName("Defects / Comments")</div>
+                        <div>
+                            @Html.TextAreaFor(model => model.UnderVehichleChecksDefectsComments, 8, 1, new { @class = "k-textbox comments-defects" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Emissions</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.Emissions)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="EmissionsSwitch" class="onoffswitch-checkbox" id="EmissionsSwitch">
+                                    <label class="onoffswitch-label" for="EmissionsSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="grid-header">@Html.DisplayName("Defects / Comments")</div>
+                        <div>
+                            @Html.TextAreaFor(model => model.EmissionsDefectsComments, 2, 1, new { @class = "k-textbox comments-defects" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Brake performance</h3>
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div>@Html.DisplayNameFor(o => o.BrakePerformance)</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="BrakePerformanceSwitch" class="onoffswitch-checkbox" id="BrakePerformanceSwitch">
+                                    <label class="onoffswitch-label" for="BrakePerformanceSwitch">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="grid-header">@Html.DisplayName("Defects / Comments")</div>
+                        <div>
+                            @Html.TextAreaFor(model => model.BrakePerformanceDefectComments, 2, 1, new { @class = "k-textbox comments-defects" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input class="k-button" type="submit" value="Save" />
+    <button id="cancel" class="lose-changes-button k-button" type="button" value="Cancel">Cancel</button>
+    <script id="lose-changes-confirmation" type="text/x-kendo-template">
+        <p class="lose-changes-message">There are unsaved changes?</p>
+        <button class="lose-changes-confirm k-button">Lose changes</button> &nbsp;
+        <a href="#" class="lose-changes-cancel k-button">Cancel</a>
+    </script>
+}
+
+<script>
+    $("form :input").change(function () {
+        $(this).closest('form').data('changed', true);
+    });
+
+    $('#cancel').click(function () {
+        if ($(this).closest('form').data('changed')) {
+            var kendoWindow = $("<div />").kendoWindow({
+                title: "Confirm",
+                resizable: false,
+                modal: true
+            });
+
+            kendoWindow.data("kendoWindow")
+                .content($("#lose-changes-confirmation").html())
+                .center().open();
+
+            kendoWindow
+                .find(".lose-changes-confirm,.lose-changes-cancel")
+                    .click(function () {
+                        if ($(this).hasClass("lose-changes-confirm")) {
+                            window.location.replace('/Vehicles/View/@Model.VehicleId.ToString()');
+                        }
+
+                        kendoWindow.data("kendoWindow").close();
+                    })
+                    .end()
+        }
+        else {
+            window.location.replace('/Vehicles/View/@Model.VehicleId.ToString()');
+        }
+    });
+</script>

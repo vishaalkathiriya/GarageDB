@@ -1,0 +1,56 @@
+﻿@model IEnumerable<GarageDB.Models.EntryViewModel>
+@{
+    ViewBag.Title = "Search";
+}
+
+<h3>@ViewBag.Title</h3>
+
+<p>Search for customers or vehicles using the box below. You can search by name, address, postcode, vehicle registration or VIN</p>
+
+@using (Html.BeginForm("Index", "Search"))
+{
+    @Html.TextBox("Search", null, new { @class = "k-textbox large" })
+    @:&nbsp; <button type="submit" value="Search" class="btn btn-default" id="Search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>
+}
+<p>
+    <br />
+    <button class="btn btn-default green-text" type="button" value="Add customer" onclick="location.href='@Url.Action("Add", "Customers")'"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Customer</button>
+    &nbsp; To add a vehicle, you must select a customer first
+</p>
+
+@if (Model.Count() > 0)
+{
+    <h3>Customers and vehicles found</h3>
+    @(Html.Kendo().Grid<GarageDB.Models.EntryViewModel>()
+      .Name("Results")
+      .Columns(columns =>
+      {
+          columns.Bound(p => p.Id).Hidden(true);
+          columns.Bound(p => p.Title).Title("");
+          columns.Template(x => { }).ClientTemplate(
+                "<a class='k-button' href='" +
+                    Url.Action("OpenEntry", "Search") +
+                    "/#= Id #'" +
+                ">View</a>"
+            ).Width(80);
+      })
+      .ClientRowTemplate("<tr bgcolor='#: Colour#'>"
+              + "<td>#: Title#</td>"
+              + "<td><a class='k-button' href='" +
+                  Url.Action("OpenEntry", "Search") +
+              "/#= Id #'" +
+              ">View</a></td>"
+              + "</tr>")
+              .Sortable()
+              .Pageable()
+          .DataSource(dataSource => dataSource
+              .Ajax()
+              .Model(model => model.Id(p => p.Id))
+              .Read(read => read.Action("_ReadSearch", "Search", new { Search = ViewBag.SearchText }))
+        )
+    )
+}
+else if (ViewBag.SearchText != null)
+{
+    <h3>No results found</h3>
+}
